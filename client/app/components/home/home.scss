@@ -1,3 +1,64 @@
-.home {
-  color: red;
+home {
+
+  .search {
+    margin: 2em 0;
+    position: relative;
+    height: 50px;
+    overflow: hidden;
+    
+    .search-input {
+      display: inline-block;
+      width: 80%;
+      input {
+        height: 50px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;      
+      }
+      input.show {
+        animation: fadeIn 0.5s;
+      }
+      @keyframes fadeIn {
+        from {
+          transform: translate(6em,0);
+          opacity: 0;
+        }
+        to {
+          transform: translate(0,0);
+          opacity: 1;
+        }
+      }
+    }  
+    
+    .search-icon {
+      position: absolute;
+      display: inline-block;
+      cursor: pointer;    
+      text-align: center;
+      background-color: #80A8BB;
+      height: 50px;
+      width: 20%;
+      padding: 0.4rem;
+    }
+    
+    svg {
+      right: 0;
+      width: 4rem;
+      height: 4rem;
+      path {
+        fill: #fff;
+      }
+    }
+  }
+  
+  figure {
+    text-align: center;
+    margin-bottom: 1em;    
+    figcaption {
+      text-align: left;
+      padding: 2em;
+      height: 115px;
+      background-color: #fff;
+    }
+  }
+  
 }

@@ -1,10 +1,14 @@
 <div ng-if="$ctrl.itemsLength">
   <ul>
     <li>
-      <button type="button" ng-disabled="$ctrl.currentPage === 1" ng-click="$ctrl.goPrev()">Previous</button>
+      <span class="previous" ng-class="{'disabled': $ctrl.currentPage === 1}" ng-click="$ctrl.goPrev()">
+        <svg viewBox="0 0 24 24"><path d="M21 12l-18 12v-24z"/></svg>
+      </span>
     </li>
     <li>
-      <button type="button" ng-disabled="$ctrl.currentPage >= $ctrl.itemsLength" ng-click="$ctrl.goNext()">Next</button>
+      <span class="next" ng-class="{'disabled': $ctrl.currentPage >= $ctrl.itemsLength}" ng-click="$ctrl.goNext()">
+        <svg viewBox="0 0 24 24"><path d="M21 12l-18 12v-24z"/></svg>
+      </span>
     </li>
   </ul>
 </div>

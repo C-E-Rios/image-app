@@ -6,8 +6,9 @@ class HomeController {
     this.homeService = homeService;
     
     //pagination
-    this.itemsPerPage = 4;
+    this.itemsPerPage = 8;
     this.currentPage = 1;    
+    this.showSearch = false;
     
     this.images = [];
     

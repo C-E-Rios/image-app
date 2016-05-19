@@ -1,6 +1,9 @@
-var path    = require('path');
-var webpack = require('webpack');
+var path              = require('path');
+var webpack           = require('webpack');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var precss            = require('precss');
+var autoprefixer      = require('autoprefixer');
 
 module.exports = {
   devtool: 'sourcemap',
@@ -9,11 +12,18 @@ module.exports = {
     loaders: [
        { test: /\.js$/, exclude: [/app\/lib/, /node_modules/], loader: 'ng-annotate!babel' },
        { test: /\.html$/, loader: 'raw' },
-       { test: /\.scss$/, loader: 'style!css?sourceMap!sass?sourceMap' },
-       { test: /\.css$/, loader: 'style!css' }
+       { test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css') },
+       { test: /\.scss$/, loader: ExtractTextPlugin.extract('style', 'css!sass') }       
     ]
   },
+  postcss: function () {
+      return [precss, autoprefixer];
+  },  
   plugins: [
+    
+    new ExtractTextPlugin('style.css', {
+      allChunks: true
+    }),    
     // Injects bundles in your index.html instead of wiring all manually.
     // It also adds hash to all injected assets so we don't have problems
     // with cache purging during deployment.
