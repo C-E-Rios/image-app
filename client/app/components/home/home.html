@@ -1,7 +1,12 @@
+<div ng-if="!$ctrl.images.length" class="spinner">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <div class="search">
+      <div class="search" ng-if="$ctrl.images.length">
         <div class="search-input">
           <input ng-class="{'show': '$ctrl.showSearch'}" type="text" ng-model="$ctrl.search" class="form-control" placeholder="Search" ng-show="$ctrl.showSearch">        
         </div>        
@@ -11,15 +16,13 @@
       </div>      
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="col-sm-3" ng-repeat="image in $ctrl.images | filter: $ctrl.search | limitImage: [$ctrl.currentPage, $ctrl.itemsPerPage] track by $index">
-        <figure>
-          <img ng-src="{{image.thumbnailUrl}}" alt="">
-          <figcaption>{{image.title}}</figcaption>
-        </figure>        
-      </div>
-    </div>       
+  <section class="row">
+    <article class="col-sm-3" ng-repeat="image in $ctrl.images | filter: $ctrl.search | limitImage: [$ctrl.currentPage, $ctrl.itemsPerPage] track by $index">
+      <figure>
+        <img ng-src="{{image.thumbnailUrl}}" alt="">
+        <figcaption>{{image.title}}</figcaption>
+      </figure>        
+    </article>     
   </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
