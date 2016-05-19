@@ -1,0 +1,10 @@
+<div ng-if="$ctrl.itemsLength">
+  <ul>
+    <li>
+      <button type="button" ng-disabled="$ctrl.currentPage === 1" ng-click="$ctrl.goPrev()">Previous</button>
+    </li>
+    <li>
+      <button type="button" ng-disabled="$ctrl.currentPage >= $ctrl.itemsLength" ng-click="$ctrl.goNext()">Next</button>
+    </li>
+  </ul>
+</div>

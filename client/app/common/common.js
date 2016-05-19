@@ -1,8 +1,8 @@
 import angular from 'angular';
-import Navbar from './navbar/navbar';
+import Pagination from './pagination/pagination';
 
 let commonModule = angular.module('app.common', [
-  Navbar.name
+  Pagination.name  
 ]);
 
 export default commonModule;

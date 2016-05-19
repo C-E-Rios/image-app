@@ -1,9 +1,26 @@
-<navbar></navbar>
-<header>
-  <hero></hero>
-</header>
-<main>
-  <div>
-    <h1>Found in {{ vm.name }}.html</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <form class="form-inline">
+        <div class="form-group">
+          <label >Search</label>
+          <input type="text" ng-model="$ctrl.search" class="form-control" placeholder="Search">
+        </div>
+      </form>      
+    </div>
   </div>
-</main>
+  <div class="row">
+    <div class="col-sm-12">
+      <div ng-repeat="image in $ctrl.images | filter: $ctrl.search | limitImage: [$ctrl.currentPage, $ctrl.itemsPerPage] track by $index">
+        <img ng-src="{{image.thumbnailUrl}}" alt="">
+        <span>{{image.title}}</span>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <pagination current-page="$ctrl.currentPage"
+          items-length="$ctrl.images.length"
+          items-per-page="$ctrl.itemsPerPage">
+      </pagination>
+    </div>        
+  </div>
+</div>
